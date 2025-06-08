@@ -1,15 +1,77 @@
 # Learning Platform Template
 
-This is a Next.js template for building a learning platform with Tailwind CSS.
+A modern learning platform built with Next.js 14, Tailwind CSS, and NextAuth.js.
 
 ## Features
 
 - Next.js 14 with App Router
 - Tailwind CSS for styling
 - TypeScript support
+- NextAuth.js authentication
 - ESLint and Prettier configuration
 - Responsive design
 - Modern UI components
+
+## Project Structure
+
+```
+├── app/                    # App router directory
+│   ├── (auth)/            # Authentication routes
+│   │   ├── signin/        # Sign in page
+│   │   └── signup/        # Sign up page
+│   ├── (dashboard)/       # Dashboard routes
+│   │   ├── courses/       # Course management
+│   │   ├── progress/      # User progress
+│   │   └── dashboard/     # Main dashboard
+│   ├── (marketing)/       # Public marketing pages
+│   ├── api/               # API routes
+│   │   └── auth/          # NextAuth.js API routes
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+├── lib/                   # Utility functions
+├── public/               # Static assets
+├── styles/               # Global styles
+├── types/                # TypeScript definitions
+│   └── next-auth.d.ts    # NextAuth type definitions
+└── middleware.ts         # Authentication middleware
+```
+
+## Authentication
+
+The platform uses NextAuth.js for authentication with the following features:
+
+### Authentication Pages
+- Sign In (`/auth/signin`)
+  - Email/password authentication
+  - Social authentication (Google, GitHub)
+  - Remember me option
+  - Forgot password link
+
+- Sign Up (`/auth/signup`)
+  - User registration form
+  - Password confirmation
+  - Terms and conditions
+  - Social sign-up options
+
+### Authentication Configuration
+- JWT-based sessions
+- Custom authentication providers
+- Protected routes
+- Role-based access control
+
+## Course Management
+
+### Available Courses
+- Course listing with details
+- Course enrollment
+- Course progress tracking
+- Module and lesson organization
+
+### User Progress
+- Progress tracking for enrolled courses
+- Course completion status
+- Learning history
+- Next lesson recommendations
 
 ## Getting Started
 
@@ -28,7 +90,26 @@ yarn install
 pnpm install
 ```
 
-3. Run the development server:
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+
+4. Configure authentication providers in `.env.local`:
+```env
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-secret-key
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# GitHub OAuth
+GITHUB_ID=your-github-client-id
+GITHUB_SECRET=your-github-client-secret
+```
+
+5. Run the development server:
 ```bash
 npm run dev
 # or
@@ -37,54 +118,27 @@ yarn dev
 pnpm dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Project Structure
-
-```
-├── app/                    # App router directory
-│   ├── (auth)/            # Authentication routes
-│   ├── (dashboard)/       # Dashboard routes
-│   ├── (marketing)/       # Public marketing pages
-│   └── layout.tsx         # Root layout
-├── components/            # Reusable components
-│   ├── ui/               # UI components
-│   └── shared/           # Shared components
-├── lib/                  # Utility functions and configurations
-├── public/              # Static assets
-├── styles/              # Global styles
-└── types/               # TypeScript type definitions
-```
-
-## Key Features to Implement
-
-1. Authentication System
-   - User registration and login
-   - Social authentication
-   - Protected routes
-
-2. Course Management
-   - Course listing
-   - Course details
-   - Course enrollment
-
-3. Learning Dashboard
-   - Progress tracking
-   - Course materials
-   - Assignments and quizzes
-
-4. User Profile
-   - Profile management
-   - Learning history
-   - Certificates
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Development Guidelines
 
-1. Follow the component structure in the `components` directory
-2. Use TypeScript for type safety
-3. Follow the Tailwind CSS utility-first approach
-4. Implement responsive design for all components
-5. Write clean and maintainable code
+### Authentication
+1. Implement authentication providers in `app/api/auth/[...nextauth]/route.ts`
+2. Add form validation in auth pages
+3. Set up email verification
+4. Configure password reset flow
+
+### Course Management
+1. Add course content
+2. Implement progress tracking
+3. Set up course enrollment
+4. Add assessment features
+
+### UI/UX
+1. Follow the component structure
+2. Use Tailwind CSS utility classes
+3. Implement responsive design
+4. Add loading states and error handling
 
 ## Available Scripts
 
@@ -101,6 +155,32 @@ pnpm dev
 3. Commit your changes
 4. Push to the branch
 5. Create a new Pull Request
+
+### Areas for Contribution
+
+1. Authentication
+   - Add more authentication providers
+   - Implement email verification
+   - Add password reset functionality
+   - Enhance security features
+
+2. Course Management
+   - Create course content
+   - Add assessment features
+   - Implement progress tracking
+   - Add course recommendations
+
+3. UI/UX
+   - Improve responsive design
+   - Add animations
+   - Enhance accessibility
+   - Create new components
+
+4. Features
+   - Add discussion forums
+   - Implement notifications
+   - Create user profiles
+   - Add course ratings
 
 ## License
 
