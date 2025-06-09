@@ -77,7 +77,7 @@ The platform uses NextAuth.js for authentication with the following features:
 
 1. Clone the repository:
 ```bash
-git clone <your-repository-url>
+git clone [https://github.com/ayasalam0/AIT-NEXTJS.git]
 cd learning-platform
 ```
 
