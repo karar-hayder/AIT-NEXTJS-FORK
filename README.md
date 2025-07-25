@@ -41,7 +41,9 @@ A modern learning platform built with Next.js 14, Tailwind CSS, and NextAuth.js.
 The platform uses NextAuth.js for authentication with the following features:
 
 ### Authentication Pages
+
 - Sign In (`/auth/signin`)
+
   - Email/password authentication
   - Social authentication (Google, GitHub)
   - Remember me option
@@ -54,6 +56,7 @@ The platform uses NextAuth.js for authentication with the following features:
   - Social sign-up options
 
 ### Authentication Configuration
+
 - JWT-based sessions
 - Custom authentication providers
 - Protected routes
@@ -62,12 +65,14 @@ The platform uses NextAuth.js for authentication with the following features:
 ## Course Management
 
 ### Available Courses
+
 - Course listing with details
 - Course enrollment
 - Course progress tracking
 - Module and lesson organization
 
 ### User Progress
+
 - Progress tracking for enrolled courses
 - Course completion status
 - Learning history
@@ -76,12 +81,14 @@ The platform uses NextAuth.js for authentication with the following features:
 ## Getting Started
 
 1. Clone the repository:
+
 ```bash
 git clone [https://github.com/ayasalam0/AIT-NEXTJS.git]
 cd learning-platform
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 # or
@@ -91,11 +98,13 @@ pnpm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.example .env.local
 ```
 
 4. Configure authentication providers in `.env.local`:
+
 ```env
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=your-secret-key
@@ -110,6 +119,7 @@ GITHUB_SECRET=your-github-client-secret
 ```
 
 5. Run the development server:
+
 ```bash
 npm run dev
 # or
@@ -123,18 +133,21 @@ pnpm dev
 ## Development Guidelines
 
 ### Authentication
+
 1. Implement authentication providers in `app/api/auth/[...nextauth]/route.ts`
 2. Add form validation in auth pages
 3. Set up email verification
 4. Configure password reset flow
 
 ### Course Management
+
 1. Add course content
 2. Implement progress tracking
 3. Set up course enrollment
 4. Add assessment features
 
 ### UI/UX
+
 1. Follow the component structure
 2. Use Tailwind CSS utility classes
 3. Implement responsive design
@@ -159,18 +172,21 @@ pnpm dev
 ### Areas for Contribution
 
 1. Authentication
+
    - Add more authentication providers
    - Implement email verification
    - Add password reset functionality
    - Enhance security features
 
 2. Course Management
+
    - Create course content
    - Add assessment features
    - Implement progress tracking
    - Add course recommendations
 
 3. UI/UX
+
    - Improve responsive design
    - Add animations
    - Enhance accessibility

@@ -1,12 +1,12 @@
 /**
  * Dashboard Layout
- * 
+ *
  * This layout is used for all authenticated user pages:
  * - Dashboard
  * - Course pages
  * - Profile
  * - Settings
- * 
+ *
  * Features:
  * - Sidebar navigation
  * - User profile section
@@ -18,11 +18,10 @@
 "use client";
 import { SessionProvider } from "next-auth/react";
 
-
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <div className="min-h-screen bg-background">
@@ -35,16 +34,24 @@ export default function DashboardLayout({
           <nav className="mt-4">
             <ul className="space-y-2">
               <li className="px-4 py-2 hover:bg-gray-100">
-                <a href="/dashboard" className="text-gray-700">Overview</a>
+                <a href="/dashboard" className="text-gray-700">
+                  Overview
+                </a>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100">
-                <a href="/dashboard/courses" className="text-gray-700">Available Courses</a>
+                <a href="/dashboard/courses" className="text-gray-700">
+                  Available Courses
+                </a>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100">
-                <a href="/dashboard/progress" className="text-gray-700">My Progress</a>
+                <a href="/dashboard/progress" className="text-gray-700">
+                  My Progress
+                </a>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100">
-                <a href="/dashboard/profile" className="text-gray-700">Profile</a>
+                <a href="/dashboard/profile" className="text-gray-700">
+                  Profile
+                </a>
               </li>
             </ul>
           </nav>
@@ -52,11 +59,9 @@ export default function DashboardLayout({
 
         {/* Main Content */}
         <main className="flex-1 p-8">
-          <SessionProvider>
-          {children}
-          </SessionProvider>
+          <SessionProvider>{children}</SessionProvider>
         </main>
       </div>
     </div>
-  )
-} 
+  );
+}

@@ -8,5 +8,5 @@ export default function Home() {
         Start building your learning platform today
       </p>
     </main>
-  )
-} 
+  );
+}

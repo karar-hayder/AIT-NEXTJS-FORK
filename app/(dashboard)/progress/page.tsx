@@ -18,24 +18,30 @@ const enrolledCourses = [
     lastAccessed: "2024-02-19",
     nextLesson: "Custom Hooks",
   },
-]
+];
 
 export default function ProgressPage() {
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold text-primary-600">My Learning Progress</h1>
+      <h1 className="text-3xl font-bold text-primary-600">
+        My Learning Progress
+      </h1>
 
       <div className="grid gap-6">
         {enrolledCourses.map((course) => (
           <div key={course.id} className="bg-white rounded-lg shadow-md p-6">
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h2 className="text-xl font-semibold text-gray-800">{course.title}</h2>
+                <h2 className="text-xl font-semibold text-gray-800">
+                  {course.title}
+                </h2>
                 <p className="text-sm text-gray-500 mt-1">
                   Last accessed: {course.lastAccessed}
                 </p>
               </div>
-              <span className="text-primary-600 font-semibold">{course.progress}%</span>
+              <span className="text-primary-600 font-semibold">
+                {course.progress}%
+              </span>
             </div>
 
             {/* Progress Bar */}
@@ -48,7 +54,8 @@ export default function ProgressPage() {
 
             <div className="flex justify-between items-center">
               <p className="text-sm text-gray-600">
-                Next lesson: <span className="font-medium">{course.nextLesson}</span>
+                Next lesson:{" "}
+                <span className="font-medium">{course.nextLesson}</span>
               </p>
               <a
                 href={`/dashboard/courses/${course.id}`}
@@ -61,5 +68,5 @@ export default function ProgressPage() {
         ))}
       </div>
     </div>
-  )
-} 
+  );
+}

@@ -15,4 +15,4 @@ export default async function DashboardPage() {
       {/* Dashboard content here */}
     </div>
   );
-} 
+}

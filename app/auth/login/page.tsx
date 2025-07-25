@@ -35,7 +35,7 @@ export default function LoginPage() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           className="border px-3 py-2 rounded"
           required
         />
@@ -43,11 +43,14 @@ export default function LoginPage() {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           className="border px-3 py-2 rounded"
           required
         />
-        <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+        <button
+          type="submit"
+          className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+        >
           Sign In
         </button>
         {error && <div className="text-red-500 text-sm">{error}</div>}
@@ -73,4 +76,4 @@ export default function LoginPage() {
       </div>
     </div>
   );
-} 
+}

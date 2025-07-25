@@ -37,7 +37,7 @@ export default function SignUpPage() {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           className="border px-3 py-2 rounded"
           required
         />
@@ -45,7 +45,7 @@ export default function SignUpPage() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           className="border px-3 py-2 rounded"
           required
         />
@@ -53,11 +53,16 @@ export default function SignUpPage() {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           className="border px-3 py-2 rounded"
           required
         />
-        <button type="submit" className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Sign Up</button>
+        <button
+          type="submit"
+          className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+        >
+          Sign Up
+        </button>
         {error && <div className="text-red-500 text-sm">{error}</div>}
         {success && <div className="text-green-600 text-sm">{success}</div>}
       </form>
@@ -82,4 +87,4 @@ export default function SignUpPage() {
       </div>
     </div>
   );
-} 
+}

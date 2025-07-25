@@ -28,17 +28,22 @@ const courses = [
     level: "Intermediate",
     progress: 0,
   },
-]
+];
 
 export default function CoursesPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold text-primary-600">Available Courses</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {courses.map((course) => (
-          <div key={course.id} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">{course.title}</h2>
+          <div
+            key={course.id}
+            className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+          >
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              {course.title}
+            </h2>
             <p className="text-gray-600 mb-4">{course.description}</p>
             <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
               <span>Duration: {course.duration}</span>
@@ -54,5 +59,5 @@ export default function CoursesPage() {
         ))}
       </div>
     </div>
-  )
-} 
+  );
+}
