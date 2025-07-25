@@ -13,18 +13,18 @@ import { withAuth } from "next-auth/middleware"
 import { NextResponse } from "next/server"
 
 export default withAuth(
-  function middleware(req) {
+  function middleware(req: Request) {
     // Add custom middleware logic here
     return NextResponse.next()
   },
   {
     callbacks: {
-      authorized: ({ token }) => !!token,
+      authorized: ({ token }: { token?: unknown }) => !!token,
     },
   }
-)
+);
 
 // Protect all routes under /dashboard
 export const config = {
   matcher: ["/dashboard/:path*"],
-} 
+};
