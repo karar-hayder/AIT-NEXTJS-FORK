@@ -12,8 +12,10 @@
 import NextAuth from "next-auth";
 import { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
+import bcrypt from "bcryptjs";
 
 // Warn if required Google OAuth env vars are missing
 if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
@@ -29,6 +31,25 @@ export const authOptions: AuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) return null;
+        const user = await prisma.user.findUnique({ where: { email: credentials.email } });
+        if (!user || !(user as any).password) return null;
+        const isValid = await bcrypt.compare(credentials.password, (user as any).password);
+        if (!isValid) return null;
+        return {
+          id: String(user.id),
+          email: user.email ? String(user.email) : "",
+          name: user.name ? String(user.name) : "",
+        };
+      },
     }),
   ],
 
@@ -61,11 +82,11 @@ export const authOptions: AuthOptions = {
 
   // Configure pages
   pages: {
-    signIn: "/auth/login",
-    signOut: "/auth/signout",
-    error: "/auth/error",
-    verifyRequest: "/auth/verify-request",
-    newUser: "/auth/new-user",
+    signIn: "/login",
+    signOut: "/logout",
+    error: "/error",
+    verifyRequest: "/verify-request",
+    newUser: "/new-user",
   },
 
   // IMPORTANT: Set NEXTAUTH_SECRET in production for security

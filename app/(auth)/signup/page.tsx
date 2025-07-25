@@ -22,7 +22,7 @@ export default function SignUpPage() {
     });
     if (res.ok) {
       setSuccess("Account created! You can now sign in.");
-      setTimeout(() => router.push("/signin"), 1500);
+      setTimeout(() => router.push("/auth/login"), 1500);
     } else {
       const data = await res.json();
       setError(data.error || "Registration failed");
@@ -81,7 +81,7 @@ export default function SignUpPage() {
       </div>
       <div className="mt-4 text-sm">
         Already have an account?{" "}
-        <a href="/signin" className="text-blue-600 hover:underline">
+        <a href="/login" className="text-blue-600 hover:underline">
           Sign in
         </a>
       </div>

@@ -6,7 +6,7 @@ import { UserMenu } from "./UserMenu";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session) {
-    redirect("/auth/signin");
+    redirect("/login");
   }
   return (
     <div className="p-8">
