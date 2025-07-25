@@ -1,12 +1,18 @@
-export default function DashboardPage() {
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+import { UserMenu } from "./UserMenu";
+
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect("/auth/signin");
+  }
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-primary-600 mb-4">
-        Dashboard
-      </h1>
-      <p className="text-lg text-gray-600">
-        Hello from the dashboard! This is where users will see their learning progress.
-      </p>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+      <UserMenu />
+      {/* Dashboard content here */}
     </div>
-  )
+  );
 } 

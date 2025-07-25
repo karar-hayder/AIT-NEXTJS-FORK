@@ -35,3 +35,8 @@ next-env.d.ts node_modules
 .env.local
 .turbo
 .vercel
+
+/app/generated/prisma
+prisma/dev.db
+.env
+.devdbrc
